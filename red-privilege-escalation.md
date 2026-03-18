@@ -31,12 +31,12 @@ nmap --script smb-os-discovery 192.168.42.156
 
 ## 3. Initial Access
 
-<img width="1447" src="https://github.com/user-attachments/assets/f25bf71c-41a8-4386-b8a9-7349c6e6f2b6" />
+<img width="847" src="https://github.com/user-attachments/assets/f25bf71c-41a8-4386-b8a9-7349c6e6f2b6" />
 
 I narrowed the search for samba by filtering the search to exploits only with a ranking of excellent, 
 since those have a higher chance of working reliably./samba/is_known_pipename turned out to be the best optino to gain shell on the target system
 
-<img width="1098" src="https://github.com/user-attachments/assets/224c0323-cd18-4a83-b056-c3413f8aa78e" />
+<img width="698" src="https://github.com/user-attachments/assets/224c0323-cd18-4a83-b056-c3413f8aa78e" />
 
 The exploit was a success, and we managed to gain shell access to victim2.
 Running whoami confirmed that shell is running on root privileges, as shown in the output
@@ -44,16 +44,21 @@ Running whoami confirmed that shell is running on root privileges, as shown in t
 
 ## 4. Discovery
 
-<img width="720" height="608" alt="image" src="https://github.com/user-attachments/assets/c22198c4-a8db-4ff1-b486-3c6626e547ca" />
+<img width="320" src="https://github.com/user-attachments/assets/c22198c4-a8db-4ff1-b486-3c6626e547ca" />
 
 After gaining access to shell, we want to further enumerate possible entry points in terms of exploitation. 
 LINpeas is a privilege escalation enumeration tool designed for Linux. It is used to find possible vulnerabilities on the system once you gained control of it. 
 
-<img width="772" height="43" alt="image" src="https://github.com/user-attachments/assets/ed153a6c-9fc7-418b-832f-2de09ebcc01f" />
+
+<img width="772" src="https://github.com/user-attachments/assets/ed153a6c-9fc7-418b-832f-2de09ebcc01f" />
+
 etc/sudoers.d/README is writable. If these filese are writable by a normal user, this could lead to modification of sudo rules which can lead to privilege escalation to root.
 
-<img width="723" height="504" alt="image" src="https://github.com/user-attachments/assets/e8f37139-eea8-4cb0-91fa-23569d7aceb1" />
+
+<img width="423" src="https://github.com/user-attachments/assets/e8f37139-eea8-4cb0-91fa-23569d7aceb1" />
+
 Several active ports and servuces, such as those mentioned in nmap in addition to local services local in localservice itself. 
+
 
 <img width="455" src="https://github.com/user-attachments/assets/82a870fc-cbbf-45b3-ac5f-1b05b7752440" />
 
@@ -62,12 +67,12 @@ Some of the cron directories are writable, which means a low privileged user cou
 
 
 ## Exploit - Crontab misconfiguration
-<img width="963" height="450" alt="image" src="https://github.com/user-attachments/assets/c5fe70f0-aef9-4dd9-be3a-82ac8a73ff14" />
+<img width="963" src="https://github.com/user-attachments/assets/c5fe70f0-aef9-4dd9-be3a-82ac8a73ff14" />
 
 backup.sh, running every minute. we can try feed in malicious script but need to locate
 
 
-<img width="174" height="249" alt="image" src="https://github.com/user-attachments/assets/47709978-7deb-4c7b-9f50-cbf633c8b717" />
+<img width="174" src="https://github.com/user-attachments/assets/47709978-7deb-4c7b-9f50-cbf633c8b717" />
 
 found in /lucas directory, probably a user hehe. Inject malicious reverse shell script
 
